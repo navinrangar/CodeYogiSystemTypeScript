@@ -1,6 +1,18 @@
-import React from "react";
+import { ButtonHTMLAttributes, FC } from "react";
 
-function Button({ theme, onClick, children, className, disabled, ...rest }) {
+type ButtonProps = {
+  theme?: "back" | "submit" | "timer" | "primary";
+  icon?: string;
+} & ButtonHTMLAttributes<HTMLButtonElement>;
+
+const Button: FC<ButtonProps> = ({
+  theme,
+  onClick,
+  children,
+  className,
+  disabled,
+  ...rest
+}: any) => {
   let themeClass = "bg-indigo-700 text-white border-black w-56 h-8";
   let disabledMode = "";
   let disabledProp = "";
@@ -10,9 +22,12 @@ function Button({ theme, onClick, children, className, disabled, ...rest }) {
     disabledProp = "disabled";
   }
 
+  if (theme === "primary") {
+    themeClass;
+  }
+
   if (theme === "submit") {
-    themeClass =
-      "bg-indigo-500 shadow-gray-400 text-white border-black p-2 inline ";
+    themeClass = "bg-indigo-500 shadow-gray-400 text-white border-black p-2 inline ";
   }
 
   if (theme === "timer") {
@@ -34,6 +49,10 @@ function Button({ theme, onClick, children, className, disabled, ...rest }) {
       {children}{" "}
     </button>
   );
-}
+};
+
+Button.defaultProps = {
+  theme: "primary"
+};
 
 export default Button;
