@@ -14,21 +14,7 @@ function App() {
   return (
     <>
       <Routes>
-        <Route index element={<Login />} />
-        <Route path="students" element={<StudentList />} />
 
-        <Route
-          path="assignments/:assignmentNumber/details"
-          element={
-            <>
-              <AssignmentDetails />
-              <AssignmentSubmit />
-            </>
-          }
-        />
-        <Route path="quiz" element={<Quiz />} />
-        <Route path="profile" element={<ProfileList />} />
-        <Route path="login" element={<Login />} />
         <Route path="lectures" element={<LectureList />} />
         <Route path="assignments" element={<AssignmentList />} />
       </Routes>
@@ -37,3 +23,27 @@ function App() {
 }
 
 export default App;
+
+/* 
+
+<Route path="quiz" element={<Quiz />} />
+        <Route path="profile" element={<ProfileList />} />
+        <Route path="login" element={<Login />} />
+
+         <Route path="students" element={<StudentList />} />
+
+        <Route
+          path="assignments/:assignmentNumber/details"
+          element={
+            <>
+              <AssignmentDetails />
+            </>
+          }
+        />
+
+        <Route index element={<Login />} />
+
+
+
+
+*/
