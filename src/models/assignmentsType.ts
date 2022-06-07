@@ -1,4 +1,4 @@
-export type assignmentsType = () => {
+export type assignmentsType = {
   id: number;
   title: string;
   created_at: string;
