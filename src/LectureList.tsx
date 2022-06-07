@@ -3,11 +3,11 @@ import LeftSideBar from "./LeftSideBar";
 import Lectures from "./Lectures";
 import GoBack from "./GoBack";
 import { getLectureList, getCachedData } from "./Api";
-import lecturesType from "./models/lecturesType";
+import { lecturesType } from "./models/lecturesType";
 
-export function LectureList(props) {
+function LectureList() {
   const token = getLectureList();
-  const cachedLectures = [];
+  let cachedLectures = [];
 
   try {
     cachedLectures = getCachedData("lectures") || [];
@@ -25,17 +25,17 @@ export function LectureList(props) {
       })
       .catch(e => {
         console.error("lecture list couldn't be fetched");
-        setError("data could not be fetched", e);
+        setError(e);
       });
   }, []);
 
   return (
     <div className="flex">
-      <div class="h-full">
+      <div className="h-full">
         <LeftSideBar> </LeftSideBar>
       </div>
 
-      <div class="space-y-2 px-8 py-4 bg-white flex flex-col items-stretch p-2 ">
+      <div className="space-y-2 px-8 py-4 bg-white flex flex-col items-stretch p-2 ">
         <div className="flex flex-row justify-between mr-96">
           <h2 className="text-black text-2xl font-bold"> Lectures </h2>
 

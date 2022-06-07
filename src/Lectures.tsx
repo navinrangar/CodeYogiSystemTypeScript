@@ -3,10 +3,10 @@ import { FC } from "react";
 import MDEditor from "@uiw/react-md-editor";
 import { lecturesType } from "./models/lecturesType";
 
-type lecturesProps = { lecturesType: lecturesType };
+type lecturesProps = { lecture: lecturesType };
 
-const Lectures: FC<lecturesProps> = ({ lecturesType }) => {
-  return <div>topic: {lecturesType.topic}</div>;
+const Lectures: FC<lecturesProps> = ({ lecture }) => {
+  return <div>topic: {lecture.topic}</div>;
 };
 
 export default Lectures;

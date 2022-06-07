@@ -14,7 +14,7 @@ export const getLectureList = async () => {
   const response = await axios.get<lecturesType[]>(CODEYOGI_BASE_URL + "batches/1/sessions", {
     withCredentials: true
   });
-
+  putCachedData("lectures", response.data);
   return response.data;
 };
 
@@ -50,9 +50,9 @@ export const getQuizList = async () => {
 
 //AssignmentDetails API area
 
-export const getAssignmentDetails = (data: number) => {
+export const getAssignmentDetails = async (data: number) => {
   try {
-    const response = axios.get<assignmentDetailsType>(
+    const response = await axios.get<assignmentDetailsType>(
       CODEYOGI_BASE_URL + `assignments/${data.assignmentNumber}`,
       {
         withCredentials: true
