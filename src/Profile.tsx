@@ -1,13 +1,13 @@
-import { useState, createContext, memo } from "react";
+import { useState, createContext, memo, FC } from "react";
 import Button from "./Button";
 import { Form, Formik } from "formik";
-import { object, string, number, toString } from "yup";
+import { object, string, number } from "yup";
 import Input from "./Input";
 import { putProfileData } from "./Api";
 import AlertContext from "./AlertContext";
 import { useContext } from "react";
 
-function Profile() {
+const Profile: FC = (): any => {
   const validationSchema = object().shape({
     email: string().email().required(),
     "passout-year": number()
@@ -167,6 +167,6 @@ function Profile() {
       </button>
     </>
   );
-}
+};
 
 export default memo(Profile);

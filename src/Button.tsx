@@ -1,18 +1,11 @@
 import { ButtonHTMLAttributes, FC } from "react";
 
-type ButtonProps = {
+type Props = {
   theme?: "back" | "submit" | "timer" | "primary";
   icon?: string;
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
-const Button: FC<ButtonProps> = ({
-  theme,
-  onClick,
-  children,
-  className,
-  disabled,
-  ...rest
-}: any) => {
+const Button: FC <Props> = ({ theme, onClick, children, className, disabled, ...rest }: any) => {
   let themeClass = "bg-indigo-700 text-white border-black w-56 h-8";
   let disabledMode = "";
   let disabledProp = "";
