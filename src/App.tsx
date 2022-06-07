@@ -1,27 +1,39 @@
-import { useState, useEffect } from "react";
-import { getLectureList } from "./Api";
-import { lecturesType } from "./models/lecturesType";
-import Lectures from "./Lectures";
-import Button from "./Button";
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import AssignmentList from "./AssignmentList";
+import LectureList from "./LectureList";
+import Quiz from "./Quiz";
+import ProfileList from "./ProfileList";
+import Login from "./Login";
+import Home from "./Home";
+import StudentList from "./StudentList";
+import AssignmentDetails from "./AssignmentDetails";
+import AssignmentSubmit from "./AssignmentSubmit";
 
-const App = () => {
-  const [lectures, setLectures] = useState<lecturesType[]>([]);
-
-  useEffect(() => {
-    getLectureList().then(data => {
-      setLectures(data);
-    });
-  }, []);
-
+function App() {
   return (
-    <div>
-      <Button> Hey There </Button>
-      {lectures.map(l => (
-        <Lectures lecturesType={l} />
-      ))}
-    </div>
-  );
-};
+    <>
+      <Routes>
+        <Route index element={<Login />} />
+        <Route path="students" element={<StudentList />} />
 
+        <Route
+          path="assignments/:assignmentNumber/details"
+          element={
+            <>
+              <AssignmentDetails />
+              <AssignmentSubmit />
+            </>
+          }
+        />
+        <Route path="quiz" element={<Quiz />} />
+        <Route path="profile" element={<ProfileList />} />
+        <Route path="login" element={<Login />} />
+        <Route path="lectures" element={<LectureList />} />
+        <Route path="assignments" element={<AssignmentList />} />
+      </Routes>
+    </>
+  );
+}
 
 export default App;

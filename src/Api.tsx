@@ -29,10 +29,11 @@ export const getStudentList = async () => {
 // Assignments List API area
 
 export const getAssignmentList = async () => {
-  const response = await axios.get<assignmentsType>(CODEYOGI_BASE_URL + `batches/1/assignments`, {
+  const response = await axios.get<assignmentsType[]>(CODEYOGI_BASE_URL + `batches/1/assignments`, {
     withCredentials: true
   });
 
+  putCachedData("assignments", response.data);
   return response.data;
 };
 
@@ -69,7 +70,7 @@ export const getAssignmentDetails = async (data: number) => {
 
 // putassignmentLink area
 
-export const putAssignmentSubmissionLink = (assignmentNumber: number, submissionLink: string) => {
+export const putAssignmentSubmissionLink = (assignmentNumber: unknown, submissionLink: string) => {
   axios.put(
     CODEYOGI_BASE_URL + `assignment/${assignmentNumber}/submit`,
     { submissionLink: submissionLink },

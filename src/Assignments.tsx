@@ -1,11 +1,14 @@
 import axios from "axios";
-import { useState } from "react";
+import { useState, FC } from "react";
 import Button from "./Button";
-import { DateTime } from "luxon";
 import AssignmentSubmit from "./AssignmentSubmit";
 import { useNavigate } from "react-router-dom";
+import { assignmentsType } from "./models/assignmentsType";
+import { DateTime } from "luxon";
 
-function Assignments({ assignment }) {
+type assignmentsProps = { assignment: assignmentsType };
+
+const Assignments: FC<assignmentsProps> = ({ assignment }) => {
   const navigate = useNavigate();
 
   return (
@@ -15,7 +18,6 @@ function Assignments({ assignment }) {
           <h3 className="text-black text-md font-bold mb-1 mr-1"> #{assignment.id} </h3>
           <h3 className="text-black text-md font-bold mb-1 mr-3"> {assignment.title} </h3>
           <h3 className="text-black text-md font-bold mb-1">
-            {" "}
             (
             {DateTime.fromISO(assignment.created_at)
               .setLocale("fr")
@@ -35,11 +37,11 @@ function Assignments({ assignment }) {
         </h3>
 
         <div className="m-6">
-          <AssignmentSubmit />
+          <AssignmentSubmit assignment={assignment} />
         </div>
       </div>
     </div>
   );
-}
+};
 
 export default Assignments;
