@@ -1,4 +1,4 @@
-export type usersType = {
+export type studentsType = {
   name: {
     title: string;
     first: string;

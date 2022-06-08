@@ -14,9 +14,20 @@ function App() {
   return (
     <>
       <Routes>
-
+        <Route index element={<Home />} />
         <Route path="lectures" element={<LectureList />} />
         <Route path="assignments" element={<AssignmentList />} />
+        <Route path="students" element={<StudentList />} />
+        <Route path="/quiz" element={<Quiz />} />
+        <Route
+          path="assignments/:assignmentNumber/details"
+          element={
+            <>
+              <AssignmentDetails />
+              <AssignmentSubmit />
+            </>
+          }
+        />
       </Routes>
     </>
   );
@@ -25,7 +36,7 @@ function App() {
 export default App;
 
 /* 
-
+        
 <Route path="quiz" element={<Quiz />} />
         <Route path="profile" element={<ProfileList />} />
         <Route path="login" element={<Login />} />

@@ -32,7 +32,7 @@ function LectureList() {
   return (
     <div className="flex">
       <div className="h-full">
-        <LeftSideBar> </LeftSideBar>
+        <LeftSideBar />
       </div>
 
       <div className="space-y-2 px-8 py-4 bg-white flex flex-col items-stretch p-2 ">

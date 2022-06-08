@@ -1,11 +1,9 @@
 import axios from "axios";
 import { lecturesType } from "./models/lecturesType";
-import { usersType } from "./models/usersType";
+import { studentsType } from "./models/studentsType";
 import { assignmentsType } from "./models/assignmentsType";
 import { assignmentDetailsType } from "./models/assignmentDetailsType";
 import { quizQuestionsType } from "./models/quizQuestionsType";
-
-type UserResponse = { results: usersType[] };
 
 const CODEYOGI_BASE_URL = "https://api.codeyogi.io/";
 const RANDOMUSER_BASE_URL = "https://randomuser.me/";
@@ -19,6 +17,8 @@ export const getLectureList = async () => {
 };
 
 //studentList API area
+
+type UserResponse = { results: studentsType[] };
 
 export const getStudentList = async () => {
   const response = await axios.get<UserResponse>(RANDOMUSER_BASE_URL + `api/?results=5`);
@@ -51,7 +51,7 @@ export const getQuizList = async () => {
 
 //AssignmentDetails API area
 
-export const getAssignmentDetails = async (data: number) => {
+export const getAssignmentDetails = async (data: any) => {
   try {
     const response = await axios.get<assignmentDetailsType>(
       CODEYOGI_BASE_URL + `assignments/${data.assignmentNumber}`,
@@ -60,9 +60,8 @@ export const getAssignmentDetails = async (data: number) => {
       }
     );
 
-    const AssignmentDetailsData = response.data;
-    putCachedData("assignment_details", AssignmentDetailsData);
-    return AssignmentDetailsData;
+    putCachedData("assignment_details", response.data);
+    return response.data;
   } catch (e) {
     handleError(e);
   }
@@ -84,12 +83,12 @@ export const putProfileData = () => {
   axios.put(CODEYOGI_BASE_URL + `me`, { withCredentials: true });
 };
 
-const putCachedData = (key: string, data: unknown[]) => {
+const putCachedData = (key: string, data: any) => {
   localStorage.setItem(key, JSON.stringify(data));
 };
 
 export const getCachedData = (key: string) => {
-  return JSON.parse(localStorage.getItem(key));
+  return JSON.parse("localStorage.getItem(key)");
 };
 
 const handleError = (e: unknown) => {

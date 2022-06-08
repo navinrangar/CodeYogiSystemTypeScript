@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 import { putAssignmentSubmissionLink } from "./Api";
 import { assignmentsType } from "./models/assignmentsType";
 
-type assignmentsProps = { assignment: assignmentsType };
+type assignmentsProps = { assignment?: assignmentsType };
 
 const AssignmentSubmit: FC<assignmentsProps> = () => {
   const [PopUp, showPopUp] = useState(false);

@@ -14,7 +14,7 @@ const Assignments: FC<assignmentsProps> = ({ assignment }) => {
   return (
     <div>
       <div className="w-screen h-full pt-4 pl-3 bg-white border border-strong shadow-md mt-5 ml-4">
-        <div onClick={() => navigate(`/assignments/${assignment.id}/details`)} className="flex">
+        <div className="flex">
           <h3 className="text-black text-md font-bold mb-1 mr-1"> #{assignment.id} </h3>
           <h3 className="text-black text-md font-bold mb-1 mr-3"> {assignment.title} </h3>
           <h3 className="text-black text-md font-bold mb-1">
@@ -45,3 +45,5 @@ const Assignments: FC<assignmentsProps> = ({ assignment }) => {
 };
 
 export default Assignments;
+
+// onClick={() => navigate(`/assignments/${assignment.id}/details`)}
