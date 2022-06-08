@@ -1,17 +1,15 @@
-import React from 'react';
+import React from "react";
 import Button from "./Button";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
-
-
-function GoBack(props) {
+function GoBack() {
   return (
-      <div> 
-       
-        <Link to ="/home"> <Button theme="back"> 🔙 </Button> </Link>
-        </div>
-  
+    <div>
+      <Link to="/home">
+        <Button theme="back"> 🔙 </Button>{" "}
+      </Link>
+    </div>
   );
 }
 
-export default GoBack ;  
+export default GoBack;

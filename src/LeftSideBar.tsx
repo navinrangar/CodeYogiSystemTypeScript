@@ -1,4 +1,4 @@
-import { React, useState, memo } from "react";
+import { useState, memo } from "react";
 import Branding from "./Branding";
 import NavLink from "./NavLink";
 import { MdAssignment, MdQuiz } from "react-icons/md";
@@ -12,6 +12,7 @@ import { Link } from "react-router-dom";
 function LeftSideBar() {
   return (
     <>
+      <Branding />
       <div>
         <h1 className="w-60 bg-gray-800 text-white text-3xl font-bold pl-3 pt-3 pb-3">
           <Link to="/home"> CODEYOGI </Link>

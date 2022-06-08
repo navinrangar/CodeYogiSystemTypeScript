@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 import { putAssignmentSubmissionLink } from "./Api";
 import { assignmentsType } from "./models/assignmentsType";
 
-type assignmentsProps = { assignment: assignmentsType };
+type assignmentsProps = { assignment?: assignmentsType };
 
 const AssignmentSubmit: FC<assignmentsProps> = () => {
   const [PopUp, showPopUp] = useState(false);
@@ -21,7 +21,7 @@ const AssignmentSubmit: FC<assignmentsProps> = () => {
       submissionLinkValidator.validateSync(submissionLink);
       const message = "assignment " + data.assignmentNumber + " has been submitted.";
       setsubmissionLinkError(message);
-    } catch (e: boolean) {
+    } catch (e: any) {
       setsubmissionLinkError(e.message);
       return [];
     }
@@ -41,7 +41,6 @@ const AssignmentSubmit: FC<assignmentsProps> = () => {
         {PopUp && (
           <div className="fixed p-10 bg-indigo-500 rounded-md top-20 left-30">
             <button className="inset-x-8 inset-y-8" onClick={() => showPopUp(false)}></button>
-
             <div className="flex flex-col">
               <input type="text" value={submissionLink} onChange={handleInputChange} />
               <Button
